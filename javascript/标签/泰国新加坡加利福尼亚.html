@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>泰国新加坡加利福尼亚</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body,
+        html {
+            height: 100%
+        }
+
+        .left {
+            width: 600px;
+            height: 800px;
+            margin: 0 0 50px 50px;
+            padding: 50px;
+            background-color: aqua;
+            float: left;
+        }
+
+        .right {
+            height: 800px;
+            margin: 50px 50px 50px 0;
+            background: -webkit-linear-gradient(top, grey, greenyellow, grey);
+            padding: 50px;
+            overflow: hidden;
+        }
+
+        .left span {
+            font-size: 23px;
+            color: coral;
+        }
+
+        .left .left-top {
+            margin: 50px 0;
+        }
+
+        .left .left-top span {
+            font-size: 20px;
+            margin-left: 10px;
+            color: gray;
+            cursor: pointer;
+        }
+
+        .left .left-bottom span {
+            border: 1px solid gray;
+            margin: 20px;
+            padding: 10px;
+            color: brown;
+            display: inline-block;
+        }
+
+        .left .left-bottom span i {
+            padding: 10px 10px 10px 0;
+        }
+
+        .left .left-bottom span b {
+            padding: 10px 0 10px 10px;
+            margin-left: 0px;
+            border-left: 1px solid gray;
+            text-align: right;
+            cursor: pointer;
+        }
+
+        .right span {
+            padding: 10px;
+            color: white;
+            margin: 20px;
+            border: 1px solid white;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="left">
+        <span>热门目的地：</span>
+        <div class="left-top">
+            <span>泰国</span>
+            <span>新加坡</span>
+            <span>加利福尼亚</span>
+            <span>马来西亚</span>
+            <span>缅甸</span>
+        </div>
+        <div class="left-bottom">
+        </div>
+    </div>
+    <div class="right">
+
+    </div>
+    <script>
+        var aLeftTopSpan = document.querySelectorAll(".left .left-top span");
+        var oLeftTop = document.querySelector(".left .left-top");
+        var oLeftBottom = document.querySelector(".left .left-bottom");
+        var oRight = document.querySelector(".right");
+
+
+        ! function () {
+
+            for (var i = 0; i < aLeftTopSpan.length; i++) {
+                // alert("a");
+                aLeftTopSpan[i].onclick = function () {
+                    add(this);
+                }
+            }
+        }();
+
+
+
+        function add(elm) {
+            var bottomSpan = document.createElement("span");
+
+            var elmI = document.createElement("i");
+            elmI.innerHTML = elm.innerHTML;
+            bottomSpan.className = "btn";
+            bottomSpan.appendChild(elmI);
+            var elmB = document.createElement("b");
+            elmB.innerHTML = "x";
+            bottomSpan.appendChild(elmB);
+
+            oLeftBottom.appendChild(bottomSpan);
+
+            var elmSpan = document.createElement("span");
+            elmSpan.innerHTML = elm.innerHTML;
+            oRight.appendChild(elmSpan);
+
+            bottomSpan.lastChild.onclick = function () {
+                oLeftTop.appendChild(elm);
+                oRight.removeChild(elmSpan);
+                oLeftBottom.removeChild(this.parentElement);
+            }
+
+
+            oLeftTop.removeChild(elm);
+        }
+    </script>
+</body>
+
+</html>

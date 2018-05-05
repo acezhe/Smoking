@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>时钟</title>
+    <style>
+        *{margin: 0;padding: 0}
+        ul{
+            list-style: none;
+        }
+        .box{
+            width: 360px;
+            height: 60px;
+            margin: 50px auto;
+
+        }
+
+        .box .clock li{
+            width: 40px;
+            height: 60px;
+            margin: 0 4px;
+            background: url("images/0.png");
+            float:left;
+        }
+
+        .box .clock li:nth-child(3){
+            width: 17px;
+            height: 60px;
+            background: url("images/d.png");
+        }
+        .box .clock li:nth-child(6){
+            width: 17px;
+            height: 60px;
+            background: url("images/d.png");
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul class="clock">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</body>
+<script>
+    var aLi = document.querySelectorAll(".box .clock li");
+
+    setTime();
+    setInterval(setTime,1000);
+
+
+    function setTime() {
+        var time = new Date();
+        var aHour = time.getHours().toString().split("");
+
+        var aMin = time.getMinutes().toString().split("");
+        var aSec = time.getSeconds().toString().split("");
+
+        if(aHour.length<2){
+            aLi[0].style.backgroundImage="url('images/0.png')";
+            aLi[1].style.backgroundImage="url('images/"+aHour[0]+".png')";
+        }else {
+            aLi[0].style.backgroundImage="url('images/"+aHour[0]+".png')";
+            aLi[1].style.backgroundImage="url('images/"+aHour[1]+".png')";
+        }
+
+        if(aMin.length<2){
+            aLi[3].style.backgroundImage="url('images/0.png')";
+            aLi[4].style.backgroundImage="url('images/"+aMin[0]+".png')";
+        }else {
+            aLi[3].style.backgroundImage="url('images/"+aMin[0]+".png')";
+            aLi[4].style.backgroundImage="url('images/"+aMin[1]+".png')";
+        }
+
+        if(aSec.length<2){
+            aLi[6].style.backgroundImage="url('images/0.png')";
+            aLi[7].style.backgroundImage="url('images/"+aSec[0]+".png')";
+        }else {
+            aLi[6].style.backgroundImage="url('images/"+aSec[0]+".png')";
+            aLi[7].style.backgroundImage="url('images/"+aSec[1]+".png')";
+        }
+    }
+</script>
+</html>

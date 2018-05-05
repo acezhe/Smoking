@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-Hans-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../图片按钮循环切换/css/homework2.css">
+    <title>homework01-2</title>
+</head>
+
+<body>
+<div class="container">
+    <div class="input_container">
+        <textarea class="input_text" name="" id="input_text" cols="20" rows="5"></textarea>
+        <p class="btns">
+            <img id="avatar" class="avatar" src="images/tx1.jpg" alt="">
+            <b class="btn">发表</b>
+        </p>
+    </div>
+    <div id="comment_container" class="comment_container">
+    </div>
+</div>
+<script>
+    var oBtn = document.querySelector(".btn");
+    var oAvatar = document.getElementById("avatar");
+    var oIput_text = document.getElementById("input_text");
+    var oComment_container = document.getElementById("comment_container");
+    var num = 1;
+    oAvatar.onclick = function () {
+        if (1 == num) {
+            num = 2;
+            oAvatar.setAttribute("src", "./images/tx1.jpg")
+        } else {
+            num = 1;
+            oAvatar.setAttribute("src", "./images/tx2.png")
+        }
+
+    }
+    oBtn.onclick = function () {
+        oComment_container.innerHTML += "<div class='comment clearfix'><img class='avatar' src=" + oAvatar.getAttribute("src") + " alt=''><p class='sub_text'>" + oIput_text.value + "</p></div>";
+        oIput_text.value = "";
+    }
+</script>
+</body>
+
+</html>

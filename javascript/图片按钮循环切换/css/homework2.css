@@ -1,0 +1,86 @@
+.container {
+    margin: 50px auto;
+    width: 800px;
+}
+
+.input_container {
+    margin: auto;
+    width: 800px;
+    height: 200px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: #ccc;
+    text-align: center;
+}
+
+.comment_container {
+    margin: 10px auto;
+    width: 760px;
+}
+
+.input_text {
+    margin-top: 20px;
+    width: 95%;
+    font-size: 16px;
+    resize: none;
+}
+
+.btns {
+    overflow: hidden;
+    margin: 20px auto;
+    width: 95%;
+}
+
+.avatar {
+    float: left;
+    /* margin-right: 50px; */
+    padding: 1px;
+    width: 40px;
+    height: 40px;
+    border: 1px solid black;
+}
+
+.avatar:hover {
+    cursor: pointer;
+}
+
+.btn {
+    float: right;
+    margin: 10px;
+    width: 60px;
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: orange;
+    color: white;
+    text-align: center;
+    line-height: 30px;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+.comment {
+    padding: 10px;
+    width: 760px;
+    border-bottom: 1px solid #ccc;
+    word-break: break-all;
+}
+
+.sub_text{
+    margin: 0;
+    width: 90%;
+    float: right;
+}
+
+.clearfix{
+    zoom: 1;
+}
+.clearfix::after{
+    content: "";
+    display: block;
+    clear: both;
+    visibility:hidden;
+    height:0
+}

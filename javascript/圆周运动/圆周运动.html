@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>圆周运动</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 500px;
+            height: 500px;
+            margin: 50px auto;
+            background-color: #cccccc;
+            position: relative;
+        }
+
+        .box .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #333333;
+            position: absolute;
+        }
+
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="dot" style="bottom:0px;left: 250px;"></div>
+    <script>
+        var xPositive = true;
+        var yPositive = true;
+        var oDot = document.querySelector(".dot");
+        var x = 0;
+        var y = 0;
+
+        // console.log(computY(250));
+        setInterval(computX, 100);
+
+        function computX() {
+            if (x === 250) {
+                xPositive = false;
+            }
+            if (x === -250) {
+                xPositive = true;
+            }
+            if (y === 0) {
+                yPositive = !yPositive;
+            }
+
+            if (xPositive) {
+                x += 10;
+            } else {
+                x -= 10;
+            }
+            if (yPositive) {
+                y = computY(x);
+            } else {
+                y = -computY(x);
+            }
+
+            console.log(x);
+            console.log(y);
+            oDot.style.left = (250 + x) + "px";
+            oDot.style.bottom = (250 + y) + "px";
+
+        }
+
+        function computY(x) {
+            return Math.sqrt(Math.pow(250, 2) - Math.pow(Math.abs(x), 2));
+        }
+
+    </script>
+</div>
+</body>
+</html>

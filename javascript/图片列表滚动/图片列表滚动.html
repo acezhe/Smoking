@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片列表滚动</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        b {
+            font-style: normal;
+        }
+
+        .box {
+            width: 239px;
+            height: 224px;
+            margin: 50px auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .box .up {
+            width: 239px;
+            height: 30px;
+            background-color: #333333;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            cursor: pointer;
+            display: block;
+            position: absolute;
+            top: 0;
+        }
+
+        .box .down {
+            width: 239px;
+            height: 30px;
+            background-color: #333333;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            cursor: pointer;
+            display: block;
+            position: absolute;
+            bottom: 0;
+        }
+
+        .box .imgs {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="imgs" style="top: 30px">
+        <img src="images/scroll1.png" alt="">
+        <img src="images/scroll2.png" alt="">
+        <img src="images/scroll3.png" alt="">
+    </div>
+    <b class="up">
+        向上
+    </b>
+    <b class="down">
+        向下
+    </b>
+</div>
+<script>
+    var oUp = document.querySelector(".up");
+    var oDown = document.querySelector(".down");
+    var oImg = document.querySelector(".box .imgs");
+
+    var intv;
+    oUp.onmousedown = function () {
+
+        intv = setInterval(scrollUp, 10);
+    };
+
+    oUp.onmouseup = function () {
+        clearInterval(intv);
+    };
+
+    oDown.onmousedown = function () {
+        intv = setInterval(scrollDown, 10);
+    };
+
+    oDown.onmouseup = function () {
+        clearInterval(intv);
+    };
+
+    function scrollUp() {
+        var upValueStr = oImg.style.top;
+        var upValueArr = upValueStr.split("p");
+        var value = upValueArr[0];
+        if (value > -530) {
+            oImg.style.top = (value - 1) + "px";
+        }
+    }
+
+    function scrollDown() {
+        var downValueStr = oImg.style.top;
+        var downValueArr = downValueStr.split("p");
+        var value = downValueArr[0];
+        if (value < 30) {
+            oImg.style.top = (Number(value) + 1) + "px";
+        }
+    }
+</script>
+</body>
+</html>

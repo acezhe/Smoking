@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>过年计时器</title>
+</head>
+<style>
+    .box {
+        width: 500px;
+        height: 300px;
+        margin: 50px auto;
+        text-align: center;
+        line-height: 300px;
+        font-size: 25px;
+    }
+
+    span {
+        color: gray;
+    }
+</style>
+<body>
+<div class="box">
+    距离过年还有 <span class="day">0</span>天<span class="hour">0</span>时<span class="min">0</span>分<span class="sec">0</span>秒
+</div>
+</body>
+
+<script>
+    var date = new Date(2018, 0, 1, 0, 0, 0, 0);
+    console.log(date.toDateString());
+    setTime();
+    setInterval(setTime, 1000);
+
+    function setTime() {
+        var curDate = new Date();
+        var minus = date-curDate;
+        var newDate = new Date(minus);
+        document.querySelector(".day").innerHTML = newDate.getDate().toString();
+        document.querySelector(".hour").innerHTML = newDate.getHours().toString();
+        document.querySelector(".min").innerHTML = newDate.getMinutes().toString();
+        document.querySelector(".sec").innerHTML = newDate.getSeconds().toString();
+    }
+</script>
+</html>

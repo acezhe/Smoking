@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>告白神器</title>
+    <style>
+        .box {
+            width: 400px;
+            height: 500px;
+            background-color: #333333;
+            border: 10px dotted yellowgreen;
+            margin: 50px auto;
+            padding: 30px;
+        }
+
+        .box p {
+            color: aliceblue;
+            font-size: 20px;
+            text-indent: 2em;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <p></p>
+</div>
+</body>
+<script>
+    var oText = document.querySelector(".box p");
+    var index = 0;
+
+    var str = "自从和你相识以来，我平静的心湖再也无法平静了。你的芳姿，你的丽影，你的笑靥，使我难以忘怀，我已被你美妙的风姿深深吸引爱是一种感受，即使痛苦也会觉得幸福；爱是一种体会，即使心碎也会觉得甜蜜；爱是一种经历，即使破碎也会觉得美丽。情人节快乐！" +
+        "本人姓我！名爱你！字想你！大名叫懂你！芳名叫疼你！乳名叫念你！书名叫梦你！外号叫追你！你可以叫我吻你。" +
+        "不论你去舍处，我的心追寻著你的踪影，你落在地上的每一个足印，都会使我激动不已。" +
+        "诚征女友：性格跟你一样，相貌和你雷同，外型与你如出一辙，可爱与你不相上下，给我感觉和你分毫不差！" +
+        "穿过世俗的风雨，流言的暗礁，妒嫉的漩涡，让爱航船，驶向你心灵的港湾…… " +
+        "此情无计可消除。才下眉头，却上心头。";
+
+    setInterval(type,100);
+
+    function type() {
+        if (index<str.length){
+            oText.innerHTML+=str[index];
+            index++;
+        }
+    }
+
+</script>
+</html>

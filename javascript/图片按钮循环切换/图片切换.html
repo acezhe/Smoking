@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-Hans-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/homework1.css">
+    <script src="js/homework1.js"></script>
+    <title>图片切换</title>
+</head>
+
+<body>
+    <div class="container">
+        <p class="switch">
+            <b id="circle" class="switch-btn btn">循环切换</b>
+            <b id="unidirection" class="switch-btn btn">单向切换</b>
+        </p>
+        <div class="content">
+            <p id="header_bar" class="bar">1/6</p>
+            <p id="footer_bar" class="footer bar">第一张图片</p>
+            <b id="preview" class="preview btn">上一张</b>
+            <b id="next" class="next btn">下一张</b>
+        </div>
+    </div>
+    <script>
+        var oCircle = document.getElementById("circle");
+        var oUnidirection = document.getElementById("unidirection");
+        var oContent = document.querySelector(".content");
+        var oHeader_bar = document.getElementById("header_bar");
+        var oFooter_bar = document.getElementById("footer_bar");
+        var oPreview = document.getElementById("preview");
+        var oNext = document.getElementById("next");
+
+        onload = function () {
+            switchChange("circle");
+            pictureSwitch("init");
+        };
+        // 这个调用感觉很不优雅,还必须包个匿名函数
+        oCircle.onclick = function () {
+            switchChange("circle");
+        };
+        oUnidirection.onclick = function () {
+            switchChange("unidirection");
+        };
+
+        oNext.onclick = function () {
+            pictureSwitch("next");
+        };
+
+        oPreview.onclick = function () {
+            pictureSwitch("preview");
+        }
+    </script>
+</body>
+
+</html>

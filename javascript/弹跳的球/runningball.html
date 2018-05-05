@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-Hans-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Running Ball</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0%
+        }
+
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+        }
+
+        .a {
+            background: -moz-radial-gradient();
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        // 窗口大小管理
+        var maxWidth = document.documentElement.clientWidth;
+        var maxHeight = document.documentElement.clientHeight;
+
+        window.onresize = function () {
+            maxWidth = document.documentElement.clientWidth;
+            maxHeight = document.documentElement.clientHeight;
+        }
+
+        // 初始化球
+
+        var balls=[];
+
+        for (var i = 0; i < 5; i++) {
+            var oBall = new Object();
+            var x_rate = Math.round(Math.random() * 10+1);
+            var y_rate = Math.round(Math.random() * 10+1);
+            // for (var i = 0; i < 10; i++) {
+
+            var ball = document.createElement("div");
+            ball.style.width = "100px";
+            ball.style.height = "100px";
+            ball.style.background = "radial-gradient(white,rgb(" + Math.round(Math.random() * 255) + "," + Math.round(
+                Math.random() * 255) + "," + Math.round(Math.random() * 255) + ")";
+            ball.style.position = "absolute";
+            ball.style.left = i*100+i*5+"px";
+            ball.style.top = 20+"px";
+            ball.style.borderRadius = "50%";
+            document.body.appendChild(ball);
+            // move(ball, x_rate, y_rate);
+            oBall.ball = ball;
+            oBall.x_rate = x_rate;
+            oBall.y_rate = y_rate;
+            balls.push(oBall);
+            setInterval("move(balls["+i+"])", 13);
+        }
+
+
+
+
+        function move(elm) {
+            // return function () {
+            var left = elm.ball.offsetLeft + elm.x_rate;
+            var top = elm.ball.offsetTop + elm.y_rate;
+
+            if (left >= (maxWidth - elm.ball.clientWidth - (elm.x_rate - 1))) {
+                elm.x_rate = -elm.x_rate;
+            }
+
+            if (top >= (maxHeight - elm.ball.clientHeight - (elm.y_rate - 1))) {
+                elm.y_rate = -elm.y_rate;
+            }
+
+            if (left <= 0) {
+                elm.x_rate = -elm.x_rate;
+            }
+
+            if (top <= 0) {
+                elm.y_rate = -elm.y_rate;
+            }
+
+            elm.ball.style.left = left + "px";
+            elm.ball.style.top = top + "px";
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>shop</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        .goods{
+            width: 805px;
+            margin:50px auto;
+            border: 1px solid darkslategrey;
+        }
+        .goods ul li{
+            border-top: 1px solid darkslategrey;
+        }
+        .goods ul li span,.goods h3 span{
+            display: inline-block;
+            width: 200px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            border-right: 1px solid darkslategrey;
+        }
+        .goods h3 span:last-child,.goods ul li span:last-child{
+            border: none;
+        }
+        .goods h3{
+
+            background-color: cornflowerblue;
+        }
+        .goods ul li:nth-child(Odd){
+
+            background-color: pink;
+        }
+        .goods ul li:nth-child(even){
+            background-color: ghostwhite;
+        }
+
+        .goods ul li span b{
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-color: orange;
+            margin: 5px;
+            vertical-align: middle;
+            line-height: 20px;
+            cursor: pointer;
+        }
+
+
+        .goods ul li span input{
+            width: 4em;
+            text-align: center;
+
+        }
+        .goods ul li span img {
+            width: 80px;
+            vertical-align: middle;
+          /*margin: ;*/
+        }
+
+        .all_total{
+            width: 804px;
+            height: 100px;
+            margin: 50px auto;
+            border: 1px solid darkslategrey;
+            background-color: cornflowerblue;
+            line-height: 100px;
+        }
+
+        .all_total span{
+            width: 200px;
+            height: 100px;
+            display: inline-block;
+            line-height: 100px;
+            vertical-align: middle;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .all_total span i{
+            font-size: 20px;
+            color: red;
+        }
+
+    </style>
+</head>
+<body>
+<div class="goods">
+    <h3>
+        <span>商品</span><span>单价</span><span>数量</span><span>小计</span>
+    </h3>
+    <ul>
+        <li><span><img src="images/shop1.jpg" alt=""></span><span class="price">1000.00</span><span><b class="dec">-</b><input
+                class="count" value="0" type="text"><b class="inc">+</b></span><span class="row_total">0</span></li>
+        <li><span><img src="images/shop2.jpg" alt=""></span><span class="price">1525.00</span><span><b class="dec">-</b><input
+                class="count" value="0" type="text"><b class="inc">+</b></span><span class="row_total">0</span></li>
+        <li><span><img src="images/shop3.jpg" alt=""></span><span class="price">2153.00</span><span><b class="dec">-</b><input
+                class="count" value="0" type="text"><b class="inc">+</b></span><span class="row_total">0</span></li>
+        <li><span><img src="images/shop4.jpg" alt=""></span><span class="price">2513.00</span><span><b class="dec">-</b><input
+                class="count" value="0" type="text"><b class="inc">+</b></span><span class="row_total">0</span></li>
+    </ul>
+</div>
+<div class="all_total">
+    <span></span><span></span><span>已选中商品: <i class="all_total_count">0</i> 件</span><span>合计费用: <i class="all_total_price">0</i> 元</span>
+</div>
+<script>
+    var aInc = document.querySelectorAll(".inc");
+    var aDec = document.querySelectorAll(".dec");
+    var aCount = document.querySelectorAll(".count");
+    var aPrice = document.querySelectorAll(".price");
+    var aRowTotal = document.querySelectorAll(".row_total");
+    var oAllTotalPrice = document.querySelector(".all_total_price");
+    var oAllTotalCount = document.querySelector(".all_total_count");
+
+    var length = aRowTotal.length;
+    for(var i = 0;i<length;i++){
+        aInc[i].index = i;
+        aDec[i].index = i;
+        aInc[i].onclick=function () {
+            aCount[this.index].value++;
+            aRowTotal[this.index].innerHTML=""+aCount[this.index].value*aPrice[this.index].innerHTML;
+            sum();
+        };
+        aDec[i].onclick=function () {
+            if(aCount[this.index].value>0) {
+                aCount[this.index].value--;
+                aRowTotal[this.index].innerHTML = "" + aCount[this.index].value * aPrice[this.index].innerHTML;
+                sum();
+            }
+        };
+
+    }
+
+    function sum() {
+        var total = 0;
+        for (var i=0;i<length;i++){
+            total+=parseInt(aRowTotal[i].innerHTML);
+        }
+        oAllTotalPrice.innerHTML=""+total;
+
+        var count = 0;
+        for (i=0;i<length;i++){
+            count+=parseInt(aCount[i].value);
+        }
+        oAllTotalCount.innerHTML=""+count;
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文本框互选</title>
+    <style>
+        .color1 {
+            color: orange;
+            font-size: larger;
+        }
+
+        .color2 {
+            color: red;
+            font-size: small;
+        }
+
+        div {
+            width: 200px;
+            height: 50px;
+            margin: 50px auto;
+            line-height: 50px;
+            border: 1px solid #333;
+            text-align: center;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+<div class="box1">我在等待</div>
+<div class="box2">我在等待</div>
+<script !src="">
+    var oBox1 = document.querySelector(".box1");
+    var oBox2 = document.querySelector(".box2");
+
+    oBox1.onmouseover = function () {
+        this.innerHTML = "我被勾住喽!"
+    }
+
+    oBox1.onmouseout = function () {
+        this.innerHTML = "我在等待"
+    }
+
+    oBox1.onclick = function () {
+        this.innerHTML = "<span class='color2'>我被点击了</span>";
+        oBox2.innerHTML = "<span class='color1'>快来点击我!</span>"
+    }
+
+    oBox2.onclick = function () {
+        this.innerHTML = "<span class='color2'>我被点击了</span>";
+        oBox1.innerHTML = "<span class='color1'>快来点击我!</span>"
+    }
+    oBox2.onmouseover = function () {
+        this.innerHTML = "我被勾住喽!"
+    }
+
+    oBox2.onmouseout = function () {
+        this.innerHTML = "我在等待"
+    }
+</script>
+</body>
+</html>

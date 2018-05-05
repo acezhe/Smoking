@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>find_replace</title>
+    <style>
+        #box {
+            width: 500px;
+            height: 500px;
+            margin: 50px auto;
+        }
+        span{
+            font-size: 20px;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+<div id="box">
+    <input id="find" type="text"><input id="replace" type="text"><input id="doFind" type="button" value="查找"><input id="doReplace" type="button" value="替换">
+    <p>
+        生活是一首歌,吟唱着人生的节奏和旋律；生活是一条路,延伸着人生的足迹和希望；
+        生活是一杯酒,饱含着人生的清醇与忧愁；生活是一团麻,交织着人生的烦恼与快乐；
+        生活是一幅画,描绘着人生经历的红绿蓝；生活是一团火,燃烧着人生的憧憬和梦想.
+    </p>
+</div>
+<script>
+    var oFind = document.getElementById("find");
+    var oReplace = document.getElementById("replace");
+    var oDoFind = document.getElementById("doFind");
+    var oDoReplace = document.getElementById("doReplace");
+    var oText = document.querySelector("#box p");
+
+    oDoFind.onclick = function () {
+        var text = oText.innerHTML;
+        text = text.split("<span>").join("");
+        text=  text.split("</span>").join("");
+        var findStr = null;
+        if (oFind.value!=null&&oFind.value!==""){
+            findStr = oFind.value;
+        }
+        var texts = text.split(findStr);
+
+        oText.innerHTML = texts.join("<span>" + findStr + "</span>");
+    };
+
+    oDoReplace.onclick = function () {
+        var text = oText.innerHTML;
+        var findStr = null;
+        if (oFind.value!=null&&oFind.value!==""){
+            findStr = oFind.value;
+        }
+        var replace = oReplace.value;
+        var texts = text.split(findStr);
+
+        oText.innerHTML = texts.join(replace);
+    };
+
+</script>
+</body>
+</html>

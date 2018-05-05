@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片按钮切换</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .box {
+            width: 360px;
+            height: 582px;
+            margin: 20px auto;
+            position: relative;
+        }
+
+        .box .imgs {
+            width: 326px;
+            height: 580px;
+            float: left;
+            border: 1px solid gray;
+        }
+
+        .box .imgs img {
+            position: absolute;
+            display: none;
+        }
+
+        .box .imgs .show {
+            display: block;
+        }
+
+        .box .btn {
+            float: left;
+        }
+
+        .box .text {
+            width: 326px;
+            height: 30px;
+            background-color: rgba(55, 55, 55, .5);
+            position: absolute;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            left: 0;
+            bottom: 0;
+        }
+
+        .box .btn li {
+            width: 30px;
+            height: 30px;
+            margin: 1px;
+            background-color: rgba(33, 33, 33, .8);
+            color: white;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+        }
+
+        .box .btn .selected {
+            background-color: rgba(33, 33, 33, .5);
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="imgs">
+        <img class="show" src="images/g1.jpg" alt="">
+        <img src="images/g2.jpg" alt="">
+        <img src="images/g3.jpg" alt="">
+        <img src="images/g4.jpg" alt="">
+    </div>
+    <span class="text">g1</span>
+    <ul class="btn">
+        <li class="selected">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+</div>
+<script>
+    var aBtn = document.querySelectorAll(".box .btn li");
+    var aImg = document.querySelectorAll(".box .imgs img");
+    var oSelected = document.querySelector(".box .btn .selected");
+    var oShow = document.querySelector(".box .imgs .show");
+    var oText = document.querySelector(".box .text");
+    var aText = ["g1", "g2", "g3", "g4"];
+
+    for (var i = 0; i < aBtn.length; i++) {
+        console.log(i);
+        aBtn[i].ind = i;
+        aBtn[i].onclick = function () {
+            var index = this.ind;
+
+            oSelected.className = "";
+            aBtn[index].className = "selected";
+            oSelected = aBtn[index];
+
+            oShow.className = "";
+            aImg[index].className = "show";
+            oShow = aImg[index];
+
+            oText.innerHTML = aText[index];
+        }
+    }
+</script>
+</body>
+</html>
