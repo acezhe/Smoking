@@ -16,6 +16,11 @@ public class SpittleTest implements SpittleRepository {
 		return createSpittleList(20);
 	}
 
+	@Override
+	public Spittle findOne(Long id) {
+		return new Spittle("Hello",new java.sql.Date(id));
+	}
+
 	private List<Spittle> createSpittleList(int count) {
 		List<Spittle> spittles = new ArrayList<>();
 		for (int i = 0; i < count; i++) {
