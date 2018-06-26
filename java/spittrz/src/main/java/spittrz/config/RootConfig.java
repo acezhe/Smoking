@@ -1,5 +1,8 @@
 package spittrz.config;
 
+import org.hibernate.validator.HibernateValidatorConfiguration;
+import org.springframework.context.MessageSource;
+import org.springframework.context.MessageSourceAware;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.context.annotation.Configuration;

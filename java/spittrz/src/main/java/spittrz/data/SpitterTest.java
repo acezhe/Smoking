@@ -11,6 +11,6 @@ public class SpitterTest implements SpitterRepository {
 
     @Override
     public Spitter findByUsername(String username) {
-        return null;
+        return new Spitter(username, "p", "f", "l", "e");
     }
 }
