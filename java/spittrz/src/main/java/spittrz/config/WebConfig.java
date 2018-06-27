@@ -1,6 +1,7 @@
 package spittrz.config;
 
 import org.hibernate.validator.HibernateValidator;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -38,14 +39,21 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         configurer.enable();
     }
 
+    @Bean
+    public MessageSource messageSource(){
+        ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
+        messageSource.setDefaultEncoding("UTF-8");
+        messageSource.setBasenames("classpath:ValidationMessages","classpath:PageMessages");
+        messageSource.setCacheSeconds(10);
+        return messageSource;
+    }
+
     @Override
     public Validator getValidator() {
         LocalValidatorFactoryBean localValidatorFactoryBean = new LocalValidatorFactoryBean();
-        ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
-        messageSource.setDefaultEncoding("UTF-8");
-        messageSource.setBasename("ValidationMessages");
         localValidatorFactoryBean.setProviderClass(HibernateValidator.class);
-        localValidatorFactoryBean.setValidationMessageSource(messageSource);
+        localValidatorFactoryBean.setValidationMessageSource(messageSource());
         return localValidatorFactoryBean;
     }
+
 }
