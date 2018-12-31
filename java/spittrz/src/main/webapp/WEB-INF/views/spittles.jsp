@@ -1,11 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Spittles</title>
-    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/style.css" />">
-</head>
-<body>
 <div class="listTitle">
     <h1>Recent Spittles</h1>
     <ul class="spittleList">
@@ -29,5 +22,3 @@
         </c:forEach>
     </ul>
 </div>
-</body>
-</html>
