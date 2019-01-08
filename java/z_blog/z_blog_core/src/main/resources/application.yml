@@ -6,9 +6,11 @@ spring:
     password: 8721
   
 # thymeleaf 配置
-  thymeleaf:    cache: false
+  thymeleaf:
+    cache: false
     prefix: classpath:/WEB-INF/templates/
     suffix: .html
     encoding: utf-8
     mode: html5
-    servlet:      content-type: text/html
+    servlet:
+      content-type: text/html
