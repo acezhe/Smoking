@@ -1,4 +1,4 @@
-package io.github.azhe.zblog;
+package io.github.acezhe.zblog;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
