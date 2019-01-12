@@ -1,0 +1,135 @@
+<!-- html5 标准声明 -->
+<!DOCTYPE html>
+
+<!-- 页面根元素 -->
+<html>
+
+<!--页面头元素-->
+<head>
+    <!--设置页面所有连接的默认地址-->
+    <base href="http://www.baidu.com/" target="_blank"/>
+    <!--定义了与外部资源之间的关系，通常用于连接到外部样式表-->
+    <link rel="stylesheet" type="text/css" href="jquery.css"/>
+    <!--添加内部样式来渲染html文档-->
+    <style type="text/css">
+        p{color:blue}
+    </style>
+    <!--用来加载脚本文件，如javascript-->
+    <script></script>
+    <!--用于描述会被浏览器解析的元数据，例如设置网页编码-->
+    <meta charset="UTF-8"/>
+    <meta name="keywords" content="HTML, CSS, XML, XHTML, JavaScript">
+    <meta name="description" content="免费 Web & 编程 教程">
+    <meta http-equiv="refresh" content="30"> <!-- 每30秒刷新该页面 -->
+
+    <!--页面标题，会显示在浏览器标签上,可用 Link 同时显示图片-->
+    <link rel="shortcut icon" href="图片url">
+    <title>Hello,World</title>
+</head>
+
+<!--页面主体内容, 包含可见的页面内容-->
+<body>
+
+<!--
+通用标签属性有如下四个
+title: 提示信息
+class: 为html元素定义一个或多个类名（classname）(类名从样式文件引入)
+id: 定义元素的唯一id
+style: 规定元素的行内样式
+
+块级元素 - 浏览器会自动在块级元素前添加空行
+行级元素 - 会在一行内连续显示
+-->
+
+<!-- h* 标签用来描述标题，有1-6个级别-->
+<h1>这是一个 h1 标题</h1>
+<h2>这是一个 h2 标题</h2>
+<h3>这是一个 h3 标题</h3>
+<h4>这是一个 h4 标题</h4>
+<h5>这是一个 h5 标题</h5>
+<h6>这是一个 h6 标题</h6>
+
+<!-- p 标签描述段落-->
+<p>这是一段话</p>
+<p>这是另一段话</p>
+
+<!-- a 标签用来指定超链接
+href:点击后连接的地址,可用#+id,跳转到页面指定元素,子文件夹要用 / 收尾，不然会请求两次
+target: 被连接文档在何处显示，_blank 新窗口，_parent 父框架，_self(默认) 自身，_top 跳出框架-->
+<a href="http://www.baidu.com/" target="_top" title="鼠标放上面就会提示这个信息">这是一个超链接</a>
+<a href="#sheet1">这是一个书签连接</a>
+<a href="mailto:someone@example.com?cc=someoneelse@example.com&bcc=andsomeoneelse@example.com&subject=Summer%20Party&body=You%20are%20invited%20to%20a%20big%20summer%20party!">这是一个电子邮箱连接连接,点击后会调用系统默认邮件程序</a>
+
+
+<!-- br 换行,html5中空标签可以不用加 / 闭合 -->
+<br/>
+
+<!--img 标签用来指定图像
+src:定位图片位置
+width:图像宽度
+height:图像高度
+alt:图像显示不出来时的替代文字-->
+<img src="http://www.baidu.com/img/baidu_85beaf5496f291521eb75ba38eacbd87.svg"
+     width="100" height="100" alt="这是一个图片"/>
+
+<!--hr 用来在页面中创建水平线-->
+<hr/>
+
+<!--格式化标签
+<b>	定义粗体文本
+<em>	定义着重文字
+<i>	定义斜体字
+<small>	定义小号字
+<strong>	定义加重语气
+<sub>	定义下标字
+<sup>	定义上标字
+<ins>	定义插入字
+<del>	定义删除字-->
+<b>a</b>
+<em>a</em>
+<i>a</i>
+<small>a</small>
+<strong>a</strong>
+<sub>a</sub>
+<sup>a</sup>
+<ins>a</ins>
+<del>a</del>
+
+<hr/>
+
+<!--计算机输出标签
+<code>	定义计算机代码
+<kbd>	定义键盘码
+<samp>	定义计算机代码样本
+<var>	定义变量
+<pre>	定义预格式文本-->
+<code>String</code>
+<kbd>ctrl-v</kbd>
+<samp>String</samp>
+<var>int x</var>
+<pre>text</pre>
+
+<hr/>
+
+<!--HTML 引文, 引用, 及标签定义
+<abbr>	定义缩写
+<address>	定义地址
+<bdo>	定义文字方向
+<blockquote>	定义长的引用
+<q>	定义短的引用语
+<cite>	定义引用、引证
+<dfn>	定义一个定义项目。
+-->
+<abbr>WTO</abbr>
+<address>西安市</address>
+<bdo>方向</bdo>
+<blockquote>这是一段较长的引用</blockquote>
+<q>这是一段较短的引用</q>
+<cite>引用</cite>
+<zhangzhe>这是自定义标签</zhangzhe>
+
+<div style="height: 2000px"></div>
+<p id="sheet1">书签</p>
+
+</body>
+</html>

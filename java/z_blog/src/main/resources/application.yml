@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: zblog
+  # 数据源
+  datasource:
+    url: jdbc:mysql://localhost:3306/zblog?characterEncoding=utf8&characterSetResults=utf8&autoReconnect=true&serverTimezone=GMT%2B8
+    username: root
+    password: 8721
+
+  # thymeleaf 配置
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+    encoding: utf-8
+    mode: html
+    servlet:
+      content-type: text/html
+  mvc:
+    favicon:
+      enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+server:
+  port: 8080
+  servlet:
+    context-path: /zblog
