@@ -9,6 +9,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.CONSTRUCTOR,ElementType.METHOD,ElementType.FIELD,ElementType.TYPE})
 @Documented
+@Inherited
 public @interface Author {
     String name() default "zhangzhe";
     String email() default "zhangzhe.ace@foxmail.com";
