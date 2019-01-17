@@ -1,7 +1,9 @@
 package acezhe.zblog.entity;
 
 import javax.persistence.*;
-
+/**
+ * UserInfo POJO
+ */
 @Entity
 @Table(name = "user_info")
 public class UserInfo {
