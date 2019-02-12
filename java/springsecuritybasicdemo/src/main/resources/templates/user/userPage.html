@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8"/>
+    <title>用户主页</title>
+</head>
+<body>
+<h1>用户主页</h1>
+用户名：<span th:text="${#authentication.name}"></span>
+用户角色：<span data-sec-authorize="hasRole('USER')">USER</span>
+<span data-sec-authorize="hasRole('ADMIN')">ADMIN</span>
+<a href="../index.html" th:href="@{/index}">主页</a>
+<a href="../index.html" th:href="@{/logout}">登出</a>
+</body>
+</html>

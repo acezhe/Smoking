@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN">
+<head>
+    <meta charset="UTF-8"/>
+    <title>404</title>
+</head>
+<body>
+<h1>404错误</h1>
+用户名：${user.username}
+用户角色：${user.role}
+<a href="../index.html" th:href="@{/index}">主页</a>
+<a href="../index.html" th:href="@{/logout}">登出</a>
+</body>
+</html>

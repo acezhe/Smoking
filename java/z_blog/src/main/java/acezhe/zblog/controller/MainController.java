@@ -1,6 +1,5 @@
 package acezhe.zblog.controller;
 
-import acezhe.zblog.entity.UserInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

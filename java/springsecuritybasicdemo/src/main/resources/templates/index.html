@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <title>主页</title>
+</head>
+<body>
+    <h1>欢迎访问主页！</h1>
+    <div th:if="${regMsg eq 'success'}">注册成功</div>
+    <a href="register.html" th:href="@{/toRegister}">注册</a>
+    <a href="login.html" th:href="@{/toLogin}">登录</a>
+    <a href="#" th:href="@{/logout}">登出</a>
+    <a href="user/userPage.html" th:href="@{/user/userPage}">我的主页</a>
+    <a href="admin/adminPage.html" th:href="@{/admin/adminPage}">管理</a>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN">
+<head>
+    <meta charset="UTF-8"/>
+    <title>403</title>
+</head>
+<body>
+<h1>403错误</h1>
+<!--<p th:text="${#authentication.details}"></p>-->
+<p th:text="${error}"></p>
+<a href="../index.html" th:href="@{/index}">主页</a>
+<a href="../index.html" th:href="@{/logout}">登出</a>
+</body>
+</html>

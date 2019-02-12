@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN">
+<head>
+    <meta charset="UTF-8"/>
+    <title>注册</title>
+</head>
+<body>
+<h1>请注册</h1>
+<a href="index.html" th:href="@{/index}">主页</a>
+<div th:if="${regMsg eq 'failed'}">注册失败</div>
+<form th:action="@{/register}" method="post">
+    <fieldset>
+        <label for="username">用户名</label>
+        <input type="text" id="username" name="username" placeholder="请输入用户名"/>
+        <label for="password">密码</label>
+        <input type="password" id="password" name="password"/>
+    </fieldset>
+    <fieldset>
+        <legend>角色</legend>
+        <div>
+            <input type="checkbox" id="role1" name="roles" value="USER"/>
+            <label for="role1">USER</label>
+            <input type="checkbox" id="role2" name="roles" value="ADMIN"/>
+            <label for="role2">ADMIN</label>
+        </div>
+    </fieldset>
+    <input type="submit" id="submit" name="submit"/>
+    <input type="reset" id="reset" name="reset"/>
+</form>
+</body>
+</html>

@@ -2,28 +2,29 @@ package acezhe.zblog.config;
 
 
 
+import acezhe.zblog.service.JpaUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.authentication.configurers.userdetails.UserDetailsAwareConfigurer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.userdetails.User;
-
-import javax.sql.DataSource;
 
 
 /**
- * WebSecurityConfig
+ * WebSecurityConfig 安全认证配置类
  */
 
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter, UserDetailsAwareConfigurer {
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
 
     @Autowired
-    DataSource dataSource;
+    private JpaUserDetailsService jpaUserDetailsService;
 
+    /**
+     * 配置安全认证。
+     * @param http
+     * @throws Exception
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
@@ -33,15 +34,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter, UserDetails
                 .formLogin().loginPage("/login").permitAll();
     }
 
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.jdbcAuthentication()
-//                .dataSource(dataSource)
-//                .
-//    }
-
+    /**
+     * 配置通过自定义的 DetailsService 生成 AuthenticationManager。
+     * @param auth
+     * @throws Exception
+     */
     @Override
-    public void configure(WebSecurity web) throws Exception {
-        super.configure(web);
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(jpaUserDetailsService);
     }
 }

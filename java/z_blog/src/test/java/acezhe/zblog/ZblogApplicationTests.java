@@ -1,7 +1,7 @@
 package acezhe.zblog;
 
 import acezhe.zblog.entity.UserInfo;
-import acezhe.zblog.service.UserInfoDao;
+import acezhe.zblog.dao.UserInfoDao;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

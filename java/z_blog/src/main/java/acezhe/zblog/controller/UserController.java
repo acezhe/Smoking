@@ -1,7 +1,7 @@
 package acezhe.zblog.controller;
 
 import acezhe.zblog.entity.UserInfo;
-import acezhe.zblog.service.UserInfoDao;
+import acezhe.zblog.dao.UserInfoDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
