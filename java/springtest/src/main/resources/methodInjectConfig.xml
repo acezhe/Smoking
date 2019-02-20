@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="injector" class="methodInject.Injector" scope="prototype"/>
+    <bean id="beInjector" class="methodInject.BeInjector">
+        <!--设置每次调用 getInjector 就会生成一个新的 injector bean-->
+        <lookup-method name="getInjector" bean="injector"/>
+    </bean>
+
+</beans>
