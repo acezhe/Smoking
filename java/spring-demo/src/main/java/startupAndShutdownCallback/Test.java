@@ -15,6 +15,7 @@ public class Test {
         System.out.println("first start! 初始化 bean，按配置顺序初始化 daemon bean");
         // 创建容器，创建完成后容器会自动启动,随容器启动的 bean 会按 phased 配置的顺序自动启动，数字越小启动越早
         GenericApplicationContext context = new GenericApplicationContext();
+        context.registerShutdownHook();
         new XmlBeanDefinitionReader(context).loadBeanDefinitions("startupAndShutdownCallback.xml");
         context.refresh();
 
@@ -43,7 +44,7 @@ public class Test {
         // 等待后关闭容器，终止测试
         // TODO 第二次调用 close 居然不执行 stop 和 dispose 方法，难道是个 bug？
         Thread.sleep(WAIT_TIME);
-        System.out.println("close! 关闭容器，效果有些问题。");
+        System.out.println("close! 关闭容器，效果有些问题。可能得研究下再次启动是否代码过程不同。");
         context.close();
     }
 }

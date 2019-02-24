@@ -1,31 +1,33 @@
 package startupAndShutdownCallback;
 
+import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.context.Phased;
 import org.springframework.context.SmartLifecycle;
 
-public class DaemonBeanLowPrior implements SmartLifecycle, Phased {
+public class DaemonBeanLowPrior implements SmartLifecycle, Phased, BeanNameAware {
 
 
     private boolean isRunning = false;
+    private String beanName;
 
     public void init() {
-        System.out.println(this.getClass().getSimpleName() + " init!");
+        System.out.println(beanName + " init!");
     }
 
     public void dispose() {
-        System.out.println(this.getClass().getSimpleName() + " dispose!");
+        System.out.println(beanName + " dispose!");
     }
 
     @Override
     public void start() {
         isRunning = true;
-        System.out.println(this.getClass().getSimpleName() + " is start!");
+        System.out.println(beanName + " is start!");
     }
 
     @Override
     public void stop() {
         isRunning = false;
-        System.out.println(this.getClass().getSimpleName() + " is stop!");
+        System.out.println(beanName + " is stop!");
     }
 
     @Override
@@ -36,5 +38,10 @@ public class DaemonBeanLowPrior implements SmartLifecycle, Phased {
     @Override
     public int getPhase() {
         return -1;
+    }
+
+    @Override
+    public void setBeanName(String name) {
+        this.beanName = name;
     }
 }

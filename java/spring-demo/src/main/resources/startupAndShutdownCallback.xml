@@ -4,7 +4,10 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="t1" class="startupAndShutdownCallback.DaemonBeanHighPrior"/>
-    <bean id="t2" class="startupAndShutdownCallback.DaemonBeanLowPrior"/>
+    <bean id="highPrior" class="startupAndShutdownCallback.DaemonBeanHighPrior"/>
+    <bean id="lowPrior" class="startupAndShutdownCallback.DaemonBeanLowPrior"/>
+    <bean id="lifecycleProcessor" class="org.springframework.context.support.DefaultLifecycleProcessor">
+        <property name="timeoutPerShutdownPhase" value="1000"/>
+    </bean>
 
 </beans>
