@@ -11,6 +11,8 @@ public class Test {
         context.refresh();
 
         SimpleBean bean = (SimpleBean) context.getBean("simpleBean");
+//        FactoryBean b = (FactoryBean) context.getBean("&simpleBean");
+//        System.out.println(b.toString());
         System.out.println(bean.getMessage());
     }
 }
