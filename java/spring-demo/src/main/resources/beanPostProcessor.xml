@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <!--使用了继承自 BeanFactoryPostProcessor 接口的工具：PropertyPlaceholderConfigurer，PropertyOverrideConfigurer
+    其功能是从配置文件或 jvm 环境替换 bean 定义的属性甚至类名。实现 BeanFactoryPostProcessor 接口的 bean 具有在每个类
+    生成前对类定义进行操作的能力。-->
+    <context:property-placeholder location="classpath:beanPostProcessor/order.properties"/>
+    <context:property-override location="classpath:beanPostProcessor/message.properties"/>
 
-    <bean id="myBeanPostProcessor" class="beanPostProcessor.MyBeanPostProcessor"/>
+    <!--定义了自己的实现了 BeanPostProcessor 接口的 bean。实现该接口的 bean 能够对新生成的 bean 的实例进行操作
+    这里只打印了日志示意其确实参与了过程-->
+    <bean id="myBeanPostProcessor1" class="beanPostProcessor.MyBeanPostProcessor">
+        <property name="order" value="${order1}"/>
+    </bean>
+
+    <!--order 通过 PropertyPlaceholderConfigurer 更改-->
+    <bean id="myBeanPostProcessor2" class="beanPostProcessor.MyBeanPostProcessor">
+        <property name="order" value="${order2}"/>
+    </bean>
+    <!--message 通过 PropertyOverrideConfigurer 更改-->
     <bean id="simpleBean" class="beanPostProcessor.SimpleBean" init-method="init" destroy-method="dispose">
         <property name="message" value="simple bean go go go!"/>
     </bean>
