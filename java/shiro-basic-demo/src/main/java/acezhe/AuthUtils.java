@@ -12,6 +12,9 @@ import java.util.Scanner;
 
 @Log4j2
 public class AuthUtils {
+
+    public static final String CURRENT_USER_ID = "currentUserId";
+
     public static boolean login() {
         Scanner scan = new Scanner(System.in);
         while (true) {
@@ -24,13 +27,12 @@ public class AuthUtils {
             String password = scan.next();
 
             AuthenticationToken token = new UsernamePasswordToken(username, password);
+            ((UsernamePasswordToken) token).setRememberMe(true);
             try {
                 Subject subject = SecurityUtils.getSubject();
                 subject.login(token);
-                if (subject.isAuthenticated()) {
-                    SecurityUtils.getSubject().getSession().setAttribute("currentUserId",username);
-                    return true;
-                }
+                SecurityUtils.getSubject().getSession().setAttribute(CURRENT_USER_ID, username);
+                return true;
             } catch (AuthenticationException ae) {
                 log.warn("非法登录，用户名：{}", username);
                 System.out.println("用户名或密码错误，请重新登录！！(输入 exit 退出程序)");
@@ -43,10 +45,14 @@ public class AuthUtils {
         SecurityUtils.getSubject().logout();
     }
 
-    public static boolean checkLogin(){
-        if (SecurityUtils.getSubject().isAuthenticated()){
+    public static boolean checkLogin() {
+        if (SecurityUtils.getSubject().isRemembered()) {
+            System.out.println("大侠:" + SecurityUtils.getSubject().getSession().getAttribute(CURRENT_USER_ID) + " 您是老顾客了,可以给您特殊服务!!");
             return true;
-        }else {
+        } else if (login()) {
+            System.out.println("欢迎大侠:"+SecurityUtils.getSubject().getSession().getAttribute(CURRENT_USER_ID)+" 的惠顾!!");
+            return true;
+        } else {
             return false;
         }
     }

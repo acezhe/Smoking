@@ -9,7 +9,7 @@ public class ModelService {
     public static void doServ(){
         Scanner scan = new Scanner(System.in);
         while (true) {
-            System.out.print("请选择模块(1:服务，2:登出):");
+            System.out.print("请选择模块(1:服务，2:登出,3:叫老板娘说话):");
             String select = scan.next();
             switch (select) {
                 case "1": {
@@ -18,6 +18,10 @@ public class ModelService {
                 }
                 case "2": {
                     AuthUtils.logout();
+                    return;
+                }
+                case "3":{
+                    System.out.println("小的这就去叫老板娘!!");
                     return;
                 }
                 default: {
