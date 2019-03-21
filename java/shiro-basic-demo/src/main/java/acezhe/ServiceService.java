@@ -1,6 +1,12 @@
 package acezhe;
 
-import java.util.*;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authz.AuthorizationException;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Scanner;
 
 public class ServiceService {
     private static Map<String,String> services = new HashMap<>();
@@ -25,6 +31,16 @@ public class ServiceService {
             String serInfo = services.get(serType);
             if (Objects.isNull(serInfo)){
                 System.out.println("大侠要的服务我们木有，请重新选择！！");
+                continue;
+            }
+            try {
+                if (Objects.equals("1", serType)) {
+                    SecurityUtils.getSubject().checkPermission("service:playcard");
+                } else {
+                    SecurityUtils.getSubject().checkPermission("service:lookfirm");
+                }
+            }catch (AuthorizationException ae){
+                System.out.println("大侠不可以！您没有权限。。");
                 continue;
             }
             System.out.println("大侠体验了"+serInfo+"，生命值增加了"+Math.random()*1000);
