@@ -1,11 +1,10 @@
 package acezhe;
 
-import org.apache.shiro.SecurityUtils;
-
 import java.util.Objects;
 import java.util.Scanner;
 
 /**
+ * 程序启动
  * @author zhangzhe
  */
 public class Startup {

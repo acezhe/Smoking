@@ -17,11 +17,9 @@ public class UserUtils {
     }
 
     public static void main(String[] args) {
-        String username = "zhangzhe";
-        String password = "zhangzhe";
-        generatePass(password,username+password,1024);
-        JdbcRealm rm = new JdbcRealm();
-        SQLiteConfig sc = new SQLiteConfig();
+        String username = "muti";
+        String password = "muti";
+        System.out.println(generatePass(password,username+password,1024));
 
     }
 

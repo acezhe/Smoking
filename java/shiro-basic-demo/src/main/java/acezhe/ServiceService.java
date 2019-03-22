@@ -35,9 +35,9 @@ public class ServiceService {
             }
             try {
                 if (Objects.equals("1", serType)) {
-                    SecurityUtils.getSubject().checkPermission("service:playcard");
+                    SecurityUtils.getSubject().checkRole("player");
                 } else {
-                    SecurityUtils.getSubject().checkPermission("service:lookfirm");
+                    SecurityUtils.getSubject().checkPermission("service:watchmovie");
                 }
             }catch (AuthorizationException ae){
                 System.out.println("大侠不可以！您没有权限。。");
