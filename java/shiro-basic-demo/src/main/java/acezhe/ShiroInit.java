@@ -2,10 +2,16 @@ package acezhe;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
+import org.apache.shiro.cache.ehcache.EhCache;
+import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.apache.shiro.mgt.DefaultSecurityManager;
 import org.apache.shiro.realm.jdbc.JdbcRealm;
 import org.apache.shiro.realm.text.IniRealm;
+import org.apache.shiro.session.mgt.DefaultSessionManager;
+import org.apache.shiro.session.mgt.SessionManager;
+import org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO;
+import org.apache.shiro.session.mgt.eis.SessionDAO;
 
 /**
  * shiro 初始化
@@ -23,6 +29,16 @@ public class ShiroInit {
         // 创建默认 securityManager
         DefaultSecurityManager securityManager = new DefaultSecurityManager();
         SecurityUtils.setSecurityManager(securityManager);
+        // 配置能配置缓存的 session
+        DefaultSessionManager sessionManager = new DefaultSessionManager();
+        SessionDAO sessionDAO = new EnterpriseCacheSessionDAO();
+        sessionManager.setSessionDAO(sessionDAO);
+        securityManager.setSessionManager(sessionManager);
+
+        // 配置 EhCache 缓存
+        EhCacheManager cacheManager = new EhCacheManager();
+        securityManager.setCacheManager(cacheManager);
+
         // 创建 iniRealm
         IniRealm iniRealm = new IniRealm("classpath:shiro.ini");
         // 创建 jdbcRealm

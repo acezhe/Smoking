@@ -6,7 +6,9 @@ import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.apache.shiro.subject.support.DefaultSubjectContext;
 
+import java.util.Collection;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -31,6 +33,9 @@ public class AuthUtils {
             try {
                 Subject subject = SecurityUtils.getSubject();
                 subject.login(token);
+                // 获取登录用户名
+                System.out.println("name::"+SecurityUtils.getSubject().getSession().getAttribute(DefaultSubjectContext.PRINCIPALS_SESSION_KEY));
+                // 也可以自己另外存个名字
                 SecurityUtils.getSubject().getSession().setAttribute(CURRENT_USER_ID, username);
                 return true;
             } catch (AuthenticationException ae) {
