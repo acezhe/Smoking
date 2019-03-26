@@ -1,4 +1,4 @@
-<%--
+<%@ page import="java.util.Enumeration" %><%--
   Created by IntelliJ IDEA.
   User: zhangzhe
   Date: 2019-03-26
@@ -13,8 +13,14 @@
 <body>
 <%
     String baseUrl = request.getContextPath();
+    Enumeration<String> keys = session.getAttributeNames();
+    while (keys.hasMoreElements()){
+        String key = keys.nextElement();
+        out.println(key);
+        out.println(session.getAttribute(key));
+    }
 %>
-<form action="<%=baseUrl%>/login" method="post">
+<form action="<%=baseUrl%>/login.jsp" method="post">
     <label for="username">用户名：</label>
     <input type="text" id="username" name="username"/>
     <label for="password">密码：</label>

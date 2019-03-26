@@ -41,5 +41,9 @@ public class MainController {
     public String goLogin(){
         return "login";
     }
+    @RequestMapping(method = RequestMethod.GET,path = "/unauthorized")
+    public String goUnauthorized(){
+        return "unauthorized";
+    }
 
 }
