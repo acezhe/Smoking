@@ -1,4 +1,7 @@
-<%--
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Enumeration" %>
+<%@ page import="javax.print.StreamPrintService" %>
+<%@ page import="java.util.Map" %><%--
   Created by IntelliJ IDEA.
   User: zhangzhe
   Date: 2019-03-26
@@ -11,6 +14,12 @@
     <title>Roles</title>
 </head>
 <body>
-
+<%
+   Map<String,List> map = (Map) request.getAttribute("roles");
+   List<String> list = map.get("roles");
+   for(String s:list){
+       out.println(s);
+   }
+%>
 </body>
 </html>

@@ -14,7 +14,7 @@
 <%
     String baseUrl = request.getContextPath();
 %>
-未认证用户,请登录!
-<a href="<%=baseUrl%>/loginPage">登陆</a>
+没有权限
+<a href="<%=baseUrl%>/logout">登出</a>
 </body>
 </html>

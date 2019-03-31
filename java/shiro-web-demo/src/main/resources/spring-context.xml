@@ -24,14 +24,13 @@
             <value>
                 /=anon
                 /index=anon
-                /login=anon
-                /loginPage=anon
-                /service/playCard = authc,roles[player,admin]
-                /service/watchMovie = authc,roles[watcher,admin]
-                /service/** = authc
-                /search/** = authc
-                /logout = logout
-                /**= authc
+                /loginPage=authc
+                /service/playCard = authc,perms["service:playcard"]
+                /service/watchMovie=authc,perms["service:watchmovie"]
+                /service/**=authc
+                /search/**=authc
+                /logout=logout
+                /**=authc
 
             </value>
         </property>
@@ -41,18 +40,21 @@
     </bean>
     <bean id="datasource" class="org.sqlite.SQLiteDataSource">
         <property name="url" value="jdbc:sqlite:shirowebdemo.db"/>
+        <property name="databaseName" value="basic"/>
     </bean>
     <bean id="jdbcRealm" class="org.apache.shiro.realm.jdbc.JdbcRealm">
         <property name="dataSource" ref="datasource"/>
         <property name="credentialsMatcher" ref="matcher"/>
         <property name="authenticationQuery" value="select password,salt from user where username = ?"/>
-        <property name="userRolesQuery" value="select r.role_name from role r left join user_role ur on r.id=ur.role_id left join user u on u.id=ur.user_id where u.username=?"/>
-        <property name="permissionsQuery" value="select p.permission_name from role r left join role_permission rp on r.id=rp.role_id left join permission p\
- on rp.permission_id=p.id where r.role_name=?"/>
+        <property name="userRolesQuery"
+                  value="select r.role_name from role r left join user_role ur on r.id=ur.role_id left join user u on u.id=ur.user_id where u.username=?"/>
+        <property name="permissionsQuery"
+                  value="select p.permission_name from role r left join role_permission rp on r.id=rp.role_id left join permission p on rp.permission_id=p.id where r.role_name=?"/>
         <property name="saltStyle" value="COLUMN"/>
+        <property name="permissionsLookupEnabled" value="true"/>
     </bean>
     <bean id="matcher" class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
-        <property name="hashAlgorithmName" value="SHA256"/>
+        <property name="hashAlgorithmName" value="SHA-256"/>
         <property name="hashIterations" value="1024"/>
         <property name="storedCredentialsHexEncoded" value="false"/>
     </bean>

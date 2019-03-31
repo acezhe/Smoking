@@ -8,5 +8,6 @@
 <a href="<%=baseUrl%>/loginPage">登录</a>
 <a href="<%=baseUrl%>/service">服务</a>
 <a href="<%=baseUrl%>/search">查询</a>
+<a href="<%=baseUrl%>/logout">登出</a>
 </body>
 </html>

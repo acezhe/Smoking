@@ -1,4 +1,5 @@
-<%--
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Enumeration" %><%--
   Created by IntelliJ IDEA.
   User: zhangzhe
   Date: 2019-03-26
@@ -11,6 +12,12 @@
     <title>Permission</title>
 </head>
 <body>
+<%
 
+    List<String> list = (List<String>) request.getAttribute("perms");
+    for (String s:list){
+        out.println(s);
+    }
+%>
 </body>
 </html>

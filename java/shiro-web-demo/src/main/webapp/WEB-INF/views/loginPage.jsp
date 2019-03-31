@@ -20,7 +20,10 @@
         out.println(session.getAttribute(key));
     }
 %>
-<form action="<%=baseUrl%>/login.jsp" method="post">
+<%
+    out.print(request.getAttribute("shiroLoginFailure"));
+%>
+<form action="<%=baseUrl%>/loginPage" method="post">
     <label for="username">用户名：</label>
     <input type="text" id="username" name="username"/>
     <label for="password">密码：</label>
