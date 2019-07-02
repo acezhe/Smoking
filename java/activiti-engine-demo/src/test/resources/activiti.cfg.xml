@@ -13,7 +13,7 @@
 
         <property name="asyncExecutorActivate" value="false" />
 
-<!--        <property name="mailServerHost" value="mail.my-corp.com" />-->
+<!--        <property name="mailServerHost" value="mail.my-corp.域名 com" />-->
 <!--        <property name="mailServerPort" value="5025" />-->
     </bean>
 </beans>
